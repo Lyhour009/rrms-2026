@@ -23,15 +23,15 @@ class LoginRequest extends FormRequest
   public function rules(): array
   {
     return [
-      'email' => ['required', 'email', 'string'],
-      'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/'],
+      'email' => ['required', 'email', 'string', 'exists:users,email'],
+      'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/'],
     ];
   }
   public function messages(): array
   {
     return [
+      'email.exists' => 'Email does not exist.',
       'password.min' => 'Password must be at least 8 characters long.',
-      'password.confirmed' => 'Password confirmation does not match.',
       'password.regex' => 'Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.',
     ];
   }

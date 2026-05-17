@@ -76,9 +76,7 @@ export default function Index() {
           >
             <p className="text-sm font-medium text-slate-500">{stat.label}</p>
             <div className="mt-3 flex items-end justify-between gap-3">
-              <p className="text-3xl font-bold text-slate-950">
-                {stat.value}
-              </p>
+              <p className="text-3xl font-bold text-slate-950">{stat.value}</p>
               <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
                 {stat.change}
               </span>
@@ -102,7 +100,7 @@ export default function Index() {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[640px] text-left text-sm">
+            <table className="w-full min-w-160 text-left text-sm">
               <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
                 <tr>
                   <th className="px-5 py-3 font-bold">Room</th>

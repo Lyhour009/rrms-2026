@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
-import { useState } from "react";
-
+import { Navigate, Outlet } from "react-router-dom";
+import { useContext, useState } from "react";
+import StateContext from "../context/ContextProvider";
 const navItems = [
   { label: "Dashboard", icon: "D", active: true },
   { label: "Browse Rooms", icon: "R" },
@@ -74,9 +74,14 @@ function SidebarContent({ isCollapsed = false, onNavigate }) {
   );
 }
 
-export default function UserLayout() {
+export default function DefaultLayout() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
+  const { token } = useContext(StateContext);
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <div className="min-h-screen bg-slate-100 text-slate-950">
